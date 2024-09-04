@@ -4,6 +4,7 @@ const wrapAsync = require("../utils/wrapAsync");
 const {listingSchema} = require("../schema.js");
 const expressError = require("../utils/expressError");
 const Listing = require("../models/listing.js");
+const {isLoggedIn} = require("../middleware.js");
 
 const validateListing =(req, res , next) => {
     let {error} = listingSchema.validate(req.body);
@@ -25,7 +26,7 @@ router.get(
 
 //New Route
 router.get(
-    "/new", (req, res)=> {
+    "/new", isLoggedIn, (req, res)=> {
         res.render("listings/new.ejs");
 });
 

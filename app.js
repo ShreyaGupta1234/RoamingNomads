@@ -47,7 +47,7 @@ app.get("/", (req,res) => {
     res.send("Hi, I am root");
 });
 
-app.use(session(sessionOptions));
+app.use(session(sessionOptions));//check the session if the user open the site in the same brwoser with different tabs then it dont need to login again and again
 app.use(flash());
 
 app.use(passport.initialize());
@@ -57,15 +57,15 @@ passport.use(new LocalStrategy(User.authenticate()));//use to static authenticat
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get("/demouser", async (req, res) => {
-    let fakeUser = new User ({
-        email: "student@gmail.com",
-        username: "delta-student"
-    });
+// app.get("/demouser", async (req, res) => {
+//     let fakeUser = new User ({
+//         email: "student@gmail.com",
+//         username: "delta-student"
+//     });
 
-    let registeredUser = await User.register(fakeUser, "helloworld");
-    res.send(registeredUser);
-});
+//     let registeredUser = await User.register(fakeUser, "helloworld");
+//     res.send(registeredUser);
+// });
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);

@@ -13,11 +13,11 @@ router.post(
     wrapAsync(async (req ,res) => {
     try{
         let{username, email, password} = req.body;
-    const newUser = new User({email, username});
-    const registeredUser = await User.register(newUser, password);
-    console.log(registeredUser);
-    //req.flash("success", "Welcome to RoamingNomads");
-    res.redirect("/listings");
+        const newUser = new User({email, username});
+        const registeredUser = await User.register(newUser, password);
+        console.log(registeredUser);
+        //req.flash("success", "Welcome to RoamingNomads");
+        res.redirect("/listings");
     } catch(e) {
         //req.flash("error", e.message);
         res.redirect("/signup");
@@ -35,9 +35,8 @@ router.post(
         failureFlash: true 
     }) ,
     async(req, res) => {
-        res.send("Welcome to RoamingNomads! You are logged in!");
+        res.redirect("/listings");
         //res.flash("success","Welcome to RoamingNomads!");
     }
 );
-
 module.exports = router;
