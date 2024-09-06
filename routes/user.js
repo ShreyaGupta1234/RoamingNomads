@@ -42,10 +42,10 @@ router.post(
         failureRedirect: "/login" , 
         failureFlash: true, 
     }),
-    (req, res) => {
+    async(req, res) => {
         req.flash("success","Welcome to RoamingNomads!");
-        let redirectUrl = res.locals.redirectUrl || "/listings";
-        res.redirect(redirectUrl);
+        // let redirectUrl = res.locals.redirectUrl || "/listings";
+        res.redirect(res.locals.redirectUrl);
     }
 );
 
