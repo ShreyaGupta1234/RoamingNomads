@@ -7,7 +7,6 @@ const Listing = require("../models/listing.js");
 const {validateReview, isLoggedIn, isReviewAuthor} = require("../middleware.js");
 
 
-
 //Reviews Post Route
 router.post(
     "/", 
