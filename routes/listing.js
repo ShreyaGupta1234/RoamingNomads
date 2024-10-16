@@ -35,7 +35,7 @@ router.get(
     "/:id/edit",
     isLoggedIn,
     isOwner, 
-    wrapAsync (listingController.renderEdit)
+    wrapAsync (listingController.renderEditForm)
 );
 
 //Update Route
